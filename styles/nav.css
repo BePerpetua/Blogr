@@ -1,0 +1,220 @@
+.nav-container {
+	position: absolute;
+	height: 8rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 var(--gap-10);
+	width: 100%;
+}
+
+/* .hamburger {
+	width: 2rem;
+	height: 2rem;
+	position: relative;
+} */
+
+.hamburger-checkbox {
+	display: none;
+}
+.hamburger-label {
+	position: absolute;
+	right: var(--gap-10);
+	background-image: url("../images/icon-hamburger.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 2rem;
+	height: 2rem;
+}
+.hamburger-checkbox:checked ~ .hamburger-label {
+	background-image: url("../images/icon-close.svg");
+}
+.hamburger-checkbox:not(:checked) ~ .nav {
+	display: none;
+}
+
+.nav {
+	position: absolute;
+	right: 0;
+	top: 100%;
+	margin: 0 var(--gap-5);
+	padding: var(--gap-10) var(--gap-5);
+	gap: 3ch;
+	width: calc(100% - var(--gap-5) * 2);
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	border-radius: 0.25rem;
+	box-shadow: 0.5rem 0.5rem 1rem rgb(0, 0, 0, 0.1);
+	font-family: var(--f-overpass);
+	font-weight: var(--fw-6);
+}
+
+.nav__details {
+	width: 100%; /* for the menu to stretch*/
+}
+
+.nav__item {
+	color: var(--fc-p);
+	list-style: none;
+	font-size: var(--fs-m);
+	cursor: pointer;
+}
+
+.nav__item--link {
+	text-decoration: none;
+}
+
+.nav__item--button {
+	font-family: var(--f-ubuntu);
+	font-size: var(--fs-s);
+	font-weight: var(--fw-7);
+	padding: 1.5ch min(4ch, 15%);
+	border-radius: 2rem;
+	border: none;
+	background-image: linear-gradient(
+		to right,
+		var(--bg-g-very-light-red),
+		var(--bg-g-light-red)
+	);
+	color: var(--fc-w);
+}
+
+.nav__triangle {
+	display: inline-block;
+	width: 1ch;
+	height: 1ch;
+	background: url("../images/icon-arrow-dark.svg") no-repeat center;
+}
+.nav__details[open] .nav__triangle {
+	transform: rotate(180deg);
+}
+.nav__details[open] > .nav__item {
+	color: var(--fc-s);
+}
+
+.nav__menu {
+	padding: var(--gap-5);
+	margin-top: var(--gap-5);
+	display: flex;
+	flex-direction: column;
+	gap: 2ch;
+	width: 100%;
+	background-color: var(--n-light-grey--menu);
+	font-size: var(--fs-s);
+	color: var();
+}
+
+.nav__menu-item {
+	list-style: none;
+	color: var(--fc-s);
+	cursor: pointer;
+}
+
+.nav__divider {
+	width: 100%;
+}
+
+@media screen and (min-width: 640px) {
+	.hamburger-label,
+	.hamburger-checkbox {
+		display: none;
+	}
+
+	.nav-container {
+		height: unset;
+		/* */
+		justify-content: flex-start;
+		padding: 0 min(10%, 8rem);
+		margin-top: 4rem;
+		gap: min(5%, 5rem);
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.nav {
+		position: unset;
+		margin: unset;
+		padding: unset;
+		width: unset;
+		background-color: transparent;
+		text-align: unset;
+		border-radius: unset;
+		box-shadow: none;
+		/* */
+		width: 100%;
+		display: flex !important;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+		gap: min(5%, 2rem);
+		font-family: var(--f-ubuntu);
+		font-weight: var(--fw-5);
+	}
+
+	.nav__details {
+		width: unset;
+		position: relative;
+	}
+
+	.nav__item {
+		color: var(--fc-g) !important;
+		font-size: var(--fs-s);
+	}
+	.nav__item:hover {
+		color: var(--fc-w) !important;
+		text-decoration: underline;
+	}
+
+	.nav__triangle {
+		background-image: url("../images/icon-arrow-light.svg");
+	}
+
+	.nav__divider {
+		display: none;
+	}
+
+	.nav__item--link {
+		margin-left: auto;
+	}
+
+	.nav__item--button {
+		padding: 2ch;
+		border: none;
+		background-image: none;
+		/* */
+		width: 10rem;
+		opacity: 1;
+		background-color: white;
+		color: var(--p-light-red--cta-text) !important;
+	}
+	.nav__item--button:hover {
+		color: var(--fc-w) !important;
+		background-color: var(--p-very-light-red--cta-hover-background);
+	}
+
+	.nav__menu {
+		display: flex;
+		flex-direction: column;
+		gap: 2ch;
+		width: unset;
+		background-color: white;
+		/* */
+		position: absolute;
+		padding: 2rem 1.5rem;
+		width: 10rem;
+		margin-top: 2rem;
+		border-radius: 0.25rem;
+		box-shadow: 0.5rem 0.5rem 1rem rgb(0, 0, 0, 0.1);
+	}
+
+	.nav__menu-item {
+		font-weight: var(--fw-5);
+	}
+
+	.nav__menu-item:hover {
+		font-weight: var(--fw-7);
+	}
+}
